@@ -23,10 +23,60 @@ namespace rksi.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+        public IActionResult SteamExistence()
+        {
+            return View();
+        }
+
+        public IActionResult DragonFlex()
+        {
+            return View();
+        }
+
+        //public IActionResult Registered(PlayerClass player)
+        //{
+        //    try
+        //    {
+        //        using (ApplicationContext db = new ApplicationContext())
+        //        {
+        //            player.Email = player.Email.ToLower();
+
+        //            var w = db.players.FirstOrDefault(p => p.Email == player.Email);
+
+        //            if (w != null)
+        //            {
+        //                ViewBag.message = "Игрок с таким email уже зарегистрирован";
+        //                return View();
+        //            }
+
+        //            db.players.Add(player);
+        //            db.SaveChanges();
+        //        }
+
+        //        ViewBag.message = $"Пользователь <b>{player.Email}</b> теперь в игре!";
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ViewBag.message = e.ToString();
+        //    }
+
+        //    return View();
+        //}
+
+        public IActionResult Companies()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
