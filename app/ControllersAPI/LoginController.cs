@@ -13,12 +13,19 @@ namespace app.Controllers
     [Route("api/v1/[controller]")]
     public class LoginController : APIController
     {
+        private readonly ApplicationContext _context;
+
+        public LoginController(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         const string API_LOGIN = "API_LOGIN";
 
         [HttpGet]
         public IActionResult Get(string email, string password, string code)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 if (IsTokenFalse(db,API_LOGIN,code)) return BadRequest();
 

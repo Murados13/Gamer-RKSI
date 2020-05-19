@@ -13,12 +13,19 @@ namespace app.Controllers
     [Route("api/v1/[controller]")]
     public class PlayerController : APIController
     {
+        private readonly ApplicationContext _context;
+
+        public PlayerController(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         public IActionResult Get(int id, string code)
         {
             const string API_PLAYER = "API_PLAYER";
 
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 if (IsTokenFalse(db, API_PLAYER, code)) return BadRequest();
 

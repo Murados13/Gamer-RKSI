@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 
+using Microsoft.EntityFrameworkCore;
+using app.Models;
+
 namespace app
 {
     public class Startup
@@ -44,6 +47,7 @@ namespace app
                 options.Cookie.Name = ".AdventureWorks.Session";
                 options.IdleTimeout = TimeSpan.FromSeconds(300);
             });
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GamerRKSI")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

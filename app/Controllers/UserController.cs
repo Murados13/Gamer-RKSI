@@ -16,8 +16,11 @@ namespace app.Controllers
 {
     public class UserController : Controller
     {
-        public UserController()
+        private readonly ApplicationContext _context;
+
+        public UserController(ApplicationContext context)
         {
+            _context = context;
         }
 
         public IActionResult Login()
@@ -39,7 +42,7 @@ namespace app.Controllers
 
             try
             {
-                using (ApplicationContext db = new ApplicationContext())
+                using (ApplicationContext db = this._context)
                 {
                     var _email = email.ToLower();
                     var w = db.players.FirstOrDefault(p => p.Email == _email);

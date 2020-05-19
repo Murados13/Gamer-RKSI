@@ -12,6 +12,13 @@ namespace app.Controllers
     [Route("api/v1/[controller]")]
     public class BalanceController : APIController
     {
+        private readonly ApplicationContext _context;
+
+        public BalanceController(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         const string API_BALANCE = "API_BALANCE";
 
         // GET: api/values
@@ -31,7 +38,7 @@ namespace app.Controllers
         [HttpPost]
         public IActionResult Post(int id, decimal amount, string code)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 if (IsTokenFalse(db, API_BALANCE, code)) return BadRequest();
 

@@ -17,12 +17,13 @@ namespace app.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         public String sid { get => this.ClaimSid(); }
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationContext _context;
+
+        public HomeController(ApplicationContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
@@ -38,7 +39,7 @@ namespace app.Controllers
         [Authorize]
         public IActionResult Orders()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 ViewBag.list = db.orders.ToList();
             }
@@ -48,7 +49,7 @@ namespace app.Controllers
         [Authorize]
         public IActionResult Order()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 var l = db.currencies.ToList();
                 foreach (CurrencyClass cur in l)
@@ -64,9 +65,8 @@ namespace app.Controllers
         [Authorize]
         public IActionResult MakeOrder(OrderClass order)
         {
-            try
-            {
-                using (ApplicationContext db = new ApplicationContext())
+
+                using (ApplicationContext db = this._context)
                 {
                     var w = db.players.FirstOrDefault(p => p.Email == sid);
                     order.UserId = w.id;
@@ -74,12 +74,8 @@ namespace app.Controllers
                     db.orders.Add(order);
                     db.SaveChanges();
                 }
-            }
-            catch (Exception e)
-            {
-            }
 
-            return Redirect("/Home/Orders");
+                return Redirect("/Home/Orders");
         }
         
 
@@ -92,7 +88,7 @@ namespace app.Controllers
         {
             try
             {
-                using (ApplicationContext db = new ApplicationContext())
+                using (ApplicationContext db = this._context)
                 {
                     player.Email = player.Email.ToLower();
 
@@ -120,7 +116,7 @@ namespace app.Controllers
         [Authorize]
         public IActionResult Players()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 ViewBag.players = db.players.ToList();
             }
@@ -129,7 +125,7 @@ namespace app.Controllers
         [Authorize]
         public IActionResult Logs()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 ViewBag.list = db.logs.OrderByDescending(p => p.id).ToList();
             }
@@ -139,7 +135,7 @@ namespace app.Controllers
 
         public IActionResult Player(int id)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 var w = db.players.FirstOrDefault(p => p.id == id);
                 var l = db.currencies.ToList();
@@ -158,7 +154,7 @@ namespace app.Controllers
 
         public IActionResult Details(int id, string c)
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 var player = db.players.FirstOrDefault(p => p.id == id);
                 var cur = db.currencies.FirstOrDefault(p => p.Code == c);
@@ -182,7 +178,7 @@ namespace app.Controllers
 
         public IActionResult Companies()
         {
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = this._context)
             {
                 var l = db.currencies.ToList();
                 foreach (CurrencyClass cur in l)

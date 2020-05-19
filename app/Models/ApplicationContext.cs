@@ -12,7 +12,7 @@ namespace app.Models
         public DbSet<BalanceClass> balances { get; set; }
         public DbSet<OrderClass> orders { get; set; }
 
-        public ApplicationContext()
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
@@ -20,11 +20,6 @@ namespace app.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("db_market");
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server = tcp:gamerrksi.database.windows.net,1433; Initial Catalog = GamerRKSI; Persist Security Info = False; User ID = GamerRKSI; Password=ASHAN2019-12-15; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
         }
     }
 }
