@@ -1,0 +1,47 @@
+﻿.heading {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.carousel-item > img {
+    width: 1200px;
+}
+
+.carousel-control-prev-icon {
+    opacity: 40%;
+    background-color: rgba(0,0,0,4);
+    width: 30px;
+    height: 40px;
+}
+
+.carousel-control-next-icon {
+    opacity: 40%;
+    background-color: rgba(0,0,0,4);
+    width: 30px;
+    height: 40px; 
+}
+
+main {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.button {
+    background-color: #1b6ec2;
+    width: 130px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    display: block;
+    margin-left: auto;
+}
+
+navbar-toggler {
+    background-color: white;
+}

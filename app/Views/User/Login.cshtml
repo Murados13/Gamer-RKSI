@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Вход - Gamers РКСИ";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<div class="row h-100">
+    <div class="col-12 col-sm-3 mx-auto my-auto" style="min-width: 380px;">
+        <div class="text-center mb-2">
+            <a asp-controller="Home" asp-action="Index">
+                <img src="~/img/logo1.png" alt="GamerRKSI" height="38">
+            </a>
+        </div>
+        <div class="border rounded shadow p-4" id="frame">
+            <div class="mb-2">
+                <h4>Вход</h4>
+            </div>
+            <div class="form-group">
+                <label for="iema">Логин</label>
+                <input class="form-control" type="email" placeholder="e-mail" id="iema" />
+            </div>
+            <div class="form-group">
+                <label for="ipas">Пароль</label>
+                <input class="form-control" type="password" placeholder="password" id="ipas" />
+            </div>
+            <div class="pt-2 pb-1">
+                <button class="btn btn-primary" onclick="login(this);">
+                    <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true" id="sntp" style="display: none;"></span>
+                    Вход
+                </button>
+            </div>
+        </div>
+            <a class="return" asp-controller="Home" asp-action="Index">Вернуться на главную страницу</a>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+

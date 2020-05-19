@@ -1,0 +1,33 @@
+﻿@using app.Models
+@{
+    ViewData["Title"] = "Logs";
+}
+<nav aria-label="breadcrumbc">
+    <ol class="breadcrumb p-0 bg-white">
+        <li class="breadcrumb-item"><a href="~/Home">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Логи</li>
+    </ol>
+</nav>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th style="width: 150px;">ID</th>
+            <th>Code</th>
+            <th>Описание</th>
+            <th>Дата</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (LogClass u in ViewBag.list)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(u.id.ToString(), "Player", "Home", new { @id = u.id })
+                </td>
+                <td>@u.Code</td>
+                <td>@u.Description</td>
+                <td>@u.RegDate2Str()</td>
+            </tr>
+        }
+    </tbody>
+</table>

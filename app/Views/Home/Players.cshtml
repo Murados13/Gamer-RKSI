@@ -1,0 +1,33 @@
+﻿@using app.Models
+@{
+    ViewData["Title"] = "Players";
+}
+<nav aria-label="breadcrumbc">
+    <ol class="breadcrumb p-0 bg-white">
+        <li class="breadcrumb-item"><a href="~/Home">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Игроки</li>
+    </ol>
+</nav>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th style="width: 150px;">ID</th>
+            <th>Login</th>
+            <th>Блокировка</th>
+            <th>Дата Регистрации</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PlayerClass u in ViewBag.players)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(u.id.ToString(), "Player", "Home", new { @id = u.id })
+                </td>
+                <td>@u.Email</td>
+                <td>@u.Blocked2Str()</td>
+                <td>@u.RegDate2Str()</td>
+            </tr>
+        }
+    </tbody>
+</table>

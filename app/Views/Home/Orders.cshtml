@@ -1,0 +1,52 @@
+﻿@using app.Models
+@{
+    ViewData["Title"] = "Заявки";
+}
+<nav aria-label="breadcrumbc">
+    <ol class="breadcrumb p-0 bg-white">
+        <li class="breadcrumb-item"><a href="~/Home">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Заявки</li>
+    </ol>
+</nav>
+
+<div class="row mx-1">
+    <div class="alert alert-success mx-auto" role="alert">
+        <h4 class="alert-heading">Играй и зарабатывай!</h4>
+        <p>
+            Обменивай баллы, покупай и продавай, зарабатвый вместе с нами. Оставь заявку на продажу или покупку баллов.
+            Покупай брендовые сувениры, фанатей вместе с нами в нашем фан клубе.
+        </p>
+        <hr>
+        <a class="btn btn-primary" href="/Home/Order">Новая Заявка</a>
+    </div>
+</div>
+
+
+@if (ViewBag.list != null)
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">ID</th>
+                <th>Сумма</th>
+                <th>Операция</th>
+                <th>Цена</th>
+                <th>Описание</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderClass o in ViewBag.list)
+            {
+                <tr>
+                    <td>@o.id</td>
+                    <td>@(o.Amount+" "+o.Code1)</td>
+                    <td>@o.Operation2Str()</td>
+                    <td>@(o.Price+" "+o.Code2)</td>
+                    <td>@o.Description</td>
+                    <td>@o.RegDate2Str()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

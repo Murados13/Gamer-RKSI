@@ -1,0 +1,36 @@
+﻿@using app.Models
+@{
+    ViewData["Title"] = "Players";
+}
+<nav aria-label="breadcrumbc">
+    <ol class="breadcrumb p-0 bg-white">
+        <li class="breadcrumb-item"><a href="~/Home">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Компании</li>
+    </ol>
+</nav>
+<p>Официально аккредитованные компаний на добычу драгоценных металлов.</p>
+<div class="pt-2">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Код</th>
+                <th>Металл</th>
+                <th>Компания</th>
+                <th>Баланс</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CurrencyClass c in ViewBag.list)
+            {
+                <tr>
+                    <td>@c.Code</td>
+                    <td>@c.Description</td>
+                    <td>@c.License</td>
+                    <td>@c.Amount</td>
+                    <td>@c.RegDate2Str()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

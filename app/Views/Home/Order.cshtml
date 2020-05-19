@@ -1,0 +1,68 @@
+﻿@using app.Models
+@{
+    ViewData["Title"] = "Заявки";
+}
+<nav aria-label="breadcrumbc">
+    <ol class="breadcrumb p-0 bg-white">
+        <li class="breadcrumb-item"><a href="~/Home">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Заявка</li>
+    </ol>
+</nav>
+
+<h4>Новая Заявка</h4>
+
+<div class="row mt-3">
+    <form class="col-5" action="/Home/MakeOrder" method="post">
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="numInp">Сумма</label>
+                    <input type="number" class="form-control" id="numInp" name="Amount" placeholder="0">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="curInp">Валюта</label>
+                    <select class="form-control" id="curInp" name="Code1">
+                        @foreach (CurrencyClass c in ViewBag.list)
+                        {
+                            <option value="@c.Code">@(c.Code+" "+c.Description+" ("+c.Amount+")")</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="numInp">Цена</label>
+                    <input type="number" class="form-control" name="Price" placeholder="0">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="curInp">Валюта</label>
+                    <select class="form-control" name="Code2">
+                        @foreach (CurrencyClass c in ViewBag.list)
+                        {
+                            <option value="@c.Code">@(c.Code+" "+c.Description+" ("+c.Amount+")")</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="curInp">Операция</label>
+            <select class="form-control" name="Operation">
+                <option value="1"> Покупка</option>
+                <option value="2"> Продажа</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Оформить</button>
+    </form>
+</div>
+

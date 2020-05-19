@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Players - Игрок";
+}
+<nav aria-label="breadcrumbc">
+  <ol class="breadcrumb p-0 bg-white">
+    <li class="breadcrumb-item"><a href="~/Home">Главная</a></li>
+    <li class="breadcrumb-item"><a href="~/Home/Players">Игроки</a></li>
+    <li class="breadcrumb-item active">
+       @Html.ActionLink("Карточка", "Player", "Home", new { @id = ViewBag.player.id })
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Операции</li>
+  </ol>
+</nav>
+
+<div>
+    <div class="card-body p-0">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                Email
+            </div>
+            <div class="col-sm-4">
+               <b>@ViewBag.player.Email</b> 
+            </div>
+            <div class="col-sm-2">
+                Металл
+            </div>
+            <div class="col-sm-4">
+              <b> @ViewBag.cur.Code @ViewBag.cur.Description </b>
+            </div>
+        </div>
+         <div class="form-group row">
+            <div class="col-sm-6">
+                &nbsp;
+            </div>
+            <div class="col-sm-2">
+                Сумма
+            </div>
+            <div class="col-sm-4">
+                @ViewBag.player.Amount
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-3">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">id</th>
+                <th>Операция</th>
+                <th>Сумма</th>
+                <th>Код металла</th>
+                <th>Описание</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.list.Count > 0)
+            {
+                foreach (LedgerClass c in ViewBag.list)
+                {
+                    <tr>
+                        <td>@c.id</td>
+                        <td>@c.Operation2Str()</td>
+                        <td>@c.Amount</td>
+                        <td>@c.Code</td>
+                        <td>@c.Description</td>
+                        <td>@c.RegDate2Str()</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5">
+                        Еще нет операций
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
