@@ -11,6 +11,11 @@ section h2 {
     text-align: center;
 }
 
-.footer {
+footer {
     background-color: #0b0b0b;
+
+}
+
+a{
+    color: white;
 }
