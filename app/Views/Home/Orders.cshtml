@@ -24,7 +24,7 @@
 
 @if (ViewBag.list != null)
 {
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped orders-table">
         <thead>
             <tr>
                 <th style="width: 150px;">ID</th>
@@ -33,6 +33,7 @@
                 <th>Цена</th>
                 <th>Описание</th>
                 <th>Дата</th>
+                <th>Действие</th>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +46,14 @@
                     <td>@(o.Price+" "+o.Code2)</td>
                     <td>@o.Description</td>
                     <td>@o.RegDate2Str()</td>
+                    <td data-order-id="@o.id">
+                        @if (o.State == OrderClass.STATE_INITIAL)
+                        {
+                            <a href="#" onclick="processOrder(@o.id, event)">Принять предложение</a>
+                        } else {
+                            <span>Заявка обработана</span>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>

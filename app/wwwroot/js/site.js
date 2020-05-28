@@ -24,3 +24,17 @@
     });
     return false;
 }
+
+function processOrder(id, event) {
+    event.preventDefault();
+    try {
+        $.get('/api/v1/order/process/<ID>'.replace('<ID>', id), function (data, textStatus, jqXHR) {
+            if (jqXHR.status == 200) {
+                $('td[data-order-id="' + id + '"]').html("<span>Заявка обработана</span>");
+            }
+        });
+    } catch (e) {
+        alert('Произошла ошибка!')
+        console.info(e)
+    }
+}

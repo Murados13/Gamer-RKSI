@@ -2,10 +2,6 @@
     background-color: #0b0b0b;
 }
 
-.nav-item a {
-    color: #ffffff;
-}
-
 section h2 {
     margin-bottom: 50px;
     text-align: center;
@@ -16,6 +12,10 @@ footer {
 
 }
 
-a{
+header a, header a:hover {
     color: white;
+}
+
+.orders-table th, .orders-table td {
+    text-align: center;
 }

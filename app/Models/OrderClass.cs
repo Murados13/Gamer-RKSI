@@ -6,6 +6,9 @@ namespace app.Models
 {
     public class OrderClass
     {
+        public const int STATE_INITIAL = 0;
+        public const int STATE_PROCESSED = 1;
+
         [Key]
         public int id { get; set; }
         public int Operation { get; set; }
@@ -40,7 +43,7 @@ namespace app.Models
 
         public OrderClass()
         {
-            State = 0;
+            State = OrderClass.STATE_INITIAL;
             Description = "Заявка";
             RegDate = DateTime.Now;
         }

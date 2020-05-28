@@ -28,7 +28,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ControllersAPI\" />
     <Folder Include="Views\User\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
