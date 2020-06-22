@@ -191,19 +191,6 @@ namespace app.Controllers
             return View();
         }
 
-        public IActionResult SteamExistence()
-        {
-            return View();
-        }
-        public IActionResult ReactiveSteal()
-        {
-            return View();
-        }
-        public IActionResult DragonFlex()
-        {
-            return View();
-        }
-
         public IActionResult Confidentiality()
         {
             return View();
@@ -212,6 +199,35 @@ namespace app.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        public IActionResult ShoppingCart()
+        {
+            return View();
+        }
+
+        public IActionResult Instruction()
+        {
+            return View();
+        }
+
+        //Games IActionResults
+
+        public IActionResult SteamExistence()
+        {
+            return View("Games/SteamExistence");
+        }
+        public IActionResult ReactiveSteal()
+        {
+            return View("Games/ReactiveSteal");
+        }
+        public IActionResult DragonFlex()
+        {
+            return View("Games/DragonFlex");
+        }
+        public IActionResult Dungeon()
+        {
+            return View("Games/Dungeon");
         }
 
 

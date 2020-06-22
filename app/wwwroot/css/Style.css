@@ -45,3 +45,7 @@ input[type="submit"] {
 navbar-toggler {
     background-color: white;
 }
+
+.button {
+    float: right;
+}

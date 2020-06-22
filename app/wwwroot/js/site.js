@@ -38,3 +38,13 @@ function processOrder(id, event) {
         console.info(e)
     }
 }
+
+//$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
+    $("#iema, #ipas").on('keypress', function (e) {
+        if (typeof e.keyCode !== "undefined" && e.keyCode == 13) {
+            login($('#frame button'));
+            return false;
+        }
+    });
+});
