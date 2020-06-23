@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Home\Details - Копировать.cshtml" />
-    <Content Remove="wwwroot\img\3.png" />
     <Content Remove="wwwroot\img\tshort.png" />
     <Content Remove="wwwroot\img\cup.png" />
   </ItemGroup>
@@ -39,10 +38,8 @@
     <Folder Include="wwwroot\img\Games\ReactiveSteal\" />
     <Folder Include="wwwroot\img\Games\DragonFlex\" />
     <Folder Include="wwwroot\img\Games\Dungeon\" />
-    <Folder Include="wwwroot\img\Instruction\" />
     <Folder Include="wwwroot\games\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\img\tshort.png" />
+    <Folder Include="wwwroot\img\Shop\" />
+    <Folder Include="wwwroot\img\About\" />
   </ItemGroup>
 </Project>

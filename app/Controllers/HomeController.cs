@@ -206,11 +206,6 @@ namespace app.Controllers
             return View();
         }
 
-        public IActionResult Instruction()
-        {
-            return View();
-        }
-
         //Games IActionResults
 
         public IActionResult SteamExistence()
